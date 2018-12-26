@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+#compdef quest
+autoload -U compinit && compinit
+autoload -U bashcompinit && bashcompinit
+
+_quest_bash_autocomplete() {
+    local cur prev opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    opts=$( ${COMP_WORDS[0]} --completion-bash ${COMP_WORDS[@]:1:$COMP_CWORD} )
+    if [ -z "$opts" ]; then return 1; fi
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    return 0
+}
+complete -o default -F _quest_bash_autocomplete quest
