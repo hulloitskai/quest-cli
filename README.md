@@ -10,7 +10,11 @@ Check your grades in style 😎.
 
 <img src="./docs/demo.gif" width="725px" />
 
-### Why?
+| Want to make something else that uses information from Quest?                                                                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Check out [`uwquest`](https://github.com/stevenxie/uwquest), a Golang client for Quest. This CLI tool is just a fancy wrapper around that client library. |
+
+### Why did I make `quest-cli`?
 
 lol idk tbh
 
@@ -27,6 +31,38 @@ uhhhhh quest web interface bad 😭 💯
 
 [Open an issue](https://github.com/stevenxie/quest-cli/issues/new) to request
 a new feature that you want to see added to `quest-cli`!
+
+## Installation
+
+If you're running macOS, you can install this using [Homebrew](https://brew.sh):
+
+```bash
+brew install stevenxie/tap/quest-cli
+```
+
+Otherwise, grab
+[the latest release](https://github.com/stevenxie/quest-cli/releases), unzip it
+and run it:
+
+```bash
+$ unzip quest-cli-0.1.1-macOS-x86_64
+$ cd quest-cli-0.1.1-macOS-x86_64/
+$ ./quest --version
+0.1.1
+```
+
+### Running `quest-cli`
+
+You can double-click the executable file (the `.exe` on Windows) to start
+running `quest-cli` in interactive mode.
+
+If you're running `quest-cli` in the terminal, try out the following commands:
+
+```bash
+quest login   # save Quest login to ~/.quest-cli.json (password is obfuscated)
+quest grades  # check your grades
+quest --help  # see other options
+```
 
 <br />
 
