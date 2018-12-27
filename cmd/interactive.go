@@ -84,8 +84,10 @@ func interactiveHelp() {
 	}
 
 	// Add custom entries:
-	entries = append(entries, HelpEntry{"poll", "Poll grades repeatedly, every " +
-		"30s."})
+	entries = append(entries, HelpEntry{
+		"poll",
+		gradesCmd.GetFlag("poll").Model().Help,
+	})
 	entries = append(entries, HelpEntry{"quit", "Quit interactive mode."})
 
 	fmt.Println("Commands:")

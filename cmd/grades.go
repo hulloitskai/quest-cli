@@ -135,9 +135,13 @@ check:
 		interval := time.Duration(rng.Int63n(int64(gradesMaxPollInterval-
 			gradesMinPollInterval))) + gradesMinPollInterval
 
-		interact.Errf("Checking again in %.f seconds (press ctrl-c to stop).\n",
-			interval.Seconds())
-		time.Sleep(interval)
+		for interval >= 0 {
+			interact.Errf("\rChecking again in %.f seconds (press ctrl-c to stop).",
+				interval.Seconds())
+			time.Sleep(time.Second)
+			interval -= time.Second
+		}
+		interact.Errln()
 		goto check
 	}
 	return nil
