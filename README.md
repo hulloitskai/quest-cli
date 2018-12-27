@@ -25,6 +25,7 @@ uhhhhh quest web interface bad 😭 💯
 - [x] Login and authentication
 - [x] Check grades
 - [x] Windows compatibility
+- [x] Repeatedly poll for new grades
 - [ ] Check schedule?
 - [ ] Check course availability?
 - [ ] ??? other stuff ???
@@ -60,7 +61,7 @@ If you're running `quest-cli` in the terminal, try out the following commands:
 
 ```bash
 quest login   # save Quest login to ~/.quest-cli.json (password is obfuscated)
-quest grades  # check your grades
+quest grades  # check your grades, repeatedly poll with the --poll flag
 quest --help  # see other options
 ```
 

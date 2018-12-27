@@ -6,9 +6,10 @@ import (
 	"os"
 	"strings"
 
+	kingpin "gopkg.in/alecthomas/kingpin.v2"
+
 	"github.com/stevenxie/quest-cli/internal/interact"
 	ess "github.com/unixpickle/essentials"
-	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 
 func registerInteractiveCmd(app *kingpin.Application) {
@@ -38,11 +39,18 @@ func interactive() error {
 
 		var err error
 		switch command {
+		// Information commands.
 		case gradesCmd.FullCommand():
 			err = grades()
 		case loginCmd.FullCommand():
 			err = login()
 
+		// Custom commands.
+		case "poll":
+			gradesOpts.Poll = true
+			err = grades()
+
+			// Other commands.
 		case "help":
 			interactiveHelp()
 		case "quit":
@@ -74,6 +82,10 @@ func interactiveHelp() {
 		}
 		entries = append(entries, HelpEntry{model.Name, model.Help})
 	}
+
+	// Add custom entries:
+	entries = append(entries, HelpEntry{"poll", "Poll grades repeatedly, every " +
+		"30s."})
 	entries = append(entries, HelpEntry{"quit", "Quit interactive mode."})
 
 	fmt.Println("Commands:")

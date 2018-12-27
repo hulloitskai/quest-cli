@@ -4,16 +4,15 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
+
+	kingpin "gopkg.in/alecthomas/kingpin.v2"
 
 	"github.com/cheynewallace/tabby"
-
 	"github.com/manifoldco/promptui"
-
-	"github.com/stevenxie/uwquest"
-
 	"github.com/stevenxie/quest-cli/internal/interact"
+	"github.com/stevenxie/uwquest"
 	ess "github.com/unixpickle/essentials"
-	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 
 func registerGradesCmd(app *kingpin.Application) {
@@ -25,14 +24,19 @@ func registerGradesCmd(app *kingpin.Application) {
 	// Register flags.
 	gradesCmd.Flag("term", "The name of the term to load grades for.").Short('t').
 		StringVar(&gradesOpts.Term)
+	gradesCmd.Flag("poll", "Poll for new grades every 30s.").Short('p').
+		BoolVar(&gradesOpts.Poll)
 }
 
 var (
 	gradesCmd  *kingpin.CmdClause
 	gradesOpts struct {
 		Term string
+		Poll bool
 	}
 )
+
+const gradesPollDelay = 30 * time.Second
 
 func grades() error {
 	c, err := interact.BuildClient()
@@ -40,6 +44,7 @@ func grades() error {
 		return err
 	}
 
+check:
 	interact.Errln("Fetching terms...")
 	terms, err := c.Terms()
 	if err != nil {
@@ -114,5 +119,12 @@ func grades() error {
 	interact.Errln()
 	table.Print()
 	interact.Errln()
+
+	if gradesOpts.Poll {
+		gradesOpts.Term = target.Name
+		interact.Errln("Checking again in 30 seconds (press ctrl-c to stop).")
+		time.Sleep(gradesPollDelay)
+		goto check
+	}
 	return nil
 }
