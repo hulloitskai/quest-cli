@@ -36,7 +36,7 @@ func PromptMissing(cfg *config.Config, skipPass bool) error {
 		cfg.QuestID = input
 	}
 
-	if cfg.Password == "" {
+	if (cfg.Password == "") && !skipPass {
 		var (
 			prompt = promptui.Prompt{
 				Label:     "Quest password",

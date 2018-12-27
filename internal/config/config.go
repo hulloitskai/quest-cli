@@ -18,7 +18,7 @@ const (
 // Config contains persistent program options for begone.
 type Config struct {
 	QuestID  string `json:"questId"`
-	Password string `json:"password"`
+	Password string `json:"password,omitempty"`
 }
 
 // Filepath returns the path to the config file.

@@ -65,6 +65,25 @@ quest grades  # check your grades, repeatedly poll with the --poll flag
 quest --help  # see other options
 ```
 
+#### Advanced Usage:
+
+Every command has a `--help` flag, use it to see extra flags on each command.
+
+For example, `quest login --help` reveals:
+
+```text
+usage: quest login [<flags>]
+
+Save Quest login credentials (obfuscates password).
+
+Flags:
+  -h, --help     Show context-sensitive help (also try --help-long and
+                 --help-man).
+  -v, --version  Show application version.
+  -i, --id-only  Only save Quest ID.
+  -c, --clear    Remove saved login credentials.
+```
+
 <br />
 
 ## FAQ
