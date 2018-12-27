@@ -76,8 +76,9 @@ Yes.
 Okay, not really, but don't take that from me; check the source code for
 yourself:
 
-- [`quest-cli/internal/interact/quest.go`](https://github.com/stevenxie/quest-cli/blob/master/internal/interact/quest.go)
-- [`uwquest/login.go`](https://github.com/stevenxie/uwquest/blob/master/login.go) (underlying Quest accessor library)
+- [`quest-cli/internal/interact/quest.go`](https://github.com/stevenxie/quest-cli/blob/master/internal/interact/quest.go#L25)
+- [`uwquest/login.go`](https://github.com/stevenxie/uwquest/blob/master/login.go#L32)
+  (underlying Quest accessor library)
 
 Your credentials are sent to the UWaterloo IDP (ID portal) as if you're
 logging into the Quest website itself.
