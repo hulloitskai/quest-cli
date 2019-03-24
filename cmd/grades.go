@@ -109,7 +109,7 @@ check:
 	}
 
 	interact.Errf("Fetching grades for term: '%s'...\n", target.Name)
-	grades, err := c.Grades(target.Index)
+	grades, err := c.Grades(target.ID)
 	if err != nil {
 		return ess.AddCtx("fetching grades", err)
 	}
@@ -136,7 +136,7 @@ check:
 			gradesMinPollInterval))) + gradesMinPollInterval
 
 		for interval >= 0 {
-			interact.Errf("\rChecking again in %.f seconds (press ctrl-c to stop).",
+			interact.Errf("\rChecking again in %.f seconds (press <ctrl-c> to stop).",
 				interval.Seconds())
 			time.Sleep(time.Second)
 			interval -= time.Second
