@@ -1,3 +1,14 @@
+> ### Archive Notice
+>
+> Due to changes to the UW Quest authentication API, the underlying Go client
+> library ([`stevenxie/uwquest`](https://github.com/stevenxie/uwquest)) has
+> been deprecated.
+>
+> As this CLI client is pretty much a wrapper for that client library, it
+> will also be archived and no longer maintained.
+>
+> _So long, and thanks for all the fish!_
+
 # quest-cli
 
 _A command-line client for the UWaterloo Quest Information System._
